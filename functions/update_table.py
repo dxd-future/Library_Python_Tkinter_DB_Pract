@@ -1,4 +1,6 @@
 from functions import contact
+from tkinter import *
+from tkinter.messagebox import showinfo
 
 def upd_table():
     connection = contact.connection_pool.getconn()
@@ -6,8 +8,12 @@ def upd_table():
     try:
         cursor.execute('SELECT name,price,author FROM books')
         records = cursor.fetchall() 
-        return records
+        showinfo(title="Таблица", message="Таблица обновлена!")
+        return records     
     except Exception as e:
         print(Exception)
     finally:
-        pass
+        if connection: 
+            cursor.close() 
+            contact.connection_pool.putconn(connection) 
+            contact.connection_pool.closeall()
