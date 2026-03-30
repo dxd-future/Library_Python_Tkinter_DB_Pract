@@ -1,8 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
-
-from functions import update_table
-
+from functions import update_table, open_table, add_book
 
 root = tk.Tk()
 
@@ -12,32 +9,16 @@ root.state('zoomed')
 root.iconbitmap(f'icons/books_3025.ico')
 
 
-frame = tk.Frame(root, bg="#909090")
-frame.pack(fill="x")
-
-people = update_table.upd_table()
-
-columns = ("name", "price", "author")
-
-tree = ttk.Treeview(columns=columns, show="headings")
-tree.grid(row=0, column=0)
+open_table_button = tk.Button(root, text="Показать таблицу", command=open_table.open_table)
+open_table_button.pack(anchor="center")
 
 
-tree.heading("name", text="Name", anchor="w")
-tree.heading("price", text="Price", anchor="w")
-tree.heading("author", text="Author", anchor="w")
+update_table_button = tk.Button(root, text="Обновить таблицу", command=update_table.upd_table)
+update_table_button.pack(anchor="center")
 
 
-for person in people:
-    tree.insert("", tk.END, values=person)
-
-
-scrollbar = ttk.Scrollbar(orient=tk.VERTICAL, command=tree.yview)
-tree.configure(yscroll=scrollbar.set)
-scrollbar.grid(row=0, column=1, sticky="nswe")
- 
-
-    
+add_book_button = tk.Button(root, text="Добавить книгу", command=add_book.add_book)
+add_book_button.pack(anchor="center")
 
 
 root.mainloop()
