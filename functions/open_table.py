@@ -29,6 +29,7 @@ def open_table():
         scrollbar = ttk.Scrollbar(orient=tk.VERTICAL, command=tree.yview)
         tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=0, column=1, sticky="nswe")
+
     except Exception as e:
         pass
     finally:
