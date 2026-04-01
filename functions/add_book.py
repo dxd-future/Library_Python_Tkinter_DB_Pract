@@ -5,10 +5,6 @@ def add_book(name, price, author):
     if not name or not price or not author:
         messagebox.showwarning("Ошибка", "Заполните все поля!")
         return
-
-    if type(price) != int:
-        messagebox.showwarning("Ошибка", "Цена может быть только числом!")
-        return
     
     connection = contact.connection_pool.getconn()
     cursor = connection.cursor()
