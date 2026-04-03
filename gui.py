@@ -1,5 +1,4 @@
 import tkinter as tk
-from tkinter import ttk
 from functions import open_table, add_book, edit_book_window
 
 def add():
